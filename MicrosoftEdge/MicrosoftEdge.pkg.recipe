@@ -3,11 +3,9 @@
 <plist version="1.0">
    <dict>
       <key>Description</key>
-      <string>Downloads the latest Microsoft Edge installer pkg.</string>
+      <string>Downloads the latest version of the Microsoft Edge installer package and renames the package.</string>
       <key>Identifier</key>
       <string>com.github.froegelein.pkg.microsoftedge</string>
-      <key>MinimumVersion</key>
-      <string>1.0.0</string>
       <key>Input</key>
       <dict>
          <key>NAME</key>
@@ -16,40 +14,75 @@
          <string>Microsoft</string>
          <key>SOFTWARETITLE</key>
          <string>Edge</string>
-         <key>PRODUCTID</key>
-         <string>2093504</string>
-         <key>DOWNLOADURL</key>
-         <string>https://go.microsoft.com/fwlink/?linkid=%PRODUCTID%</string>
       </dict>
+      <key>MinimumVersion</key>
+      <string>1.0.0</string>
+      <key>ParentRecipe</key>
+      <string>com.github.froegelein.download.microsoftedge</string>
       <key>Process</key>
       <array>
          <dict>
-            <key>Processor</key>
-            <string>URLDownloader</string>
             <key>Arguments</key>
             <dict>
-               <key>url</key>
-               <string>%DOWNLOADURL%</string>
-               <key>filename</key>
-               <string>%VENDOR%_%SOFTWARETITLE%.pkg</string>
+               <key>destination_path</key>
+               <string>%RECIPE_CACHE_DIR%/downloads/unpack</string>
+               <key>flat_pkg_path</key>
+               <string>%pathname%</string>
+            </dict>
+            <key>Processor</key>
+            <string>FlatPkgUnpacker</string>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>pattern</key>
+               <string>%RECIPE_CACHE_DIR%/downloads/unpack/*MicrosoftEdge*.pkg</string>
+            </dict>
+            <key>Processor</key>
+            <string>FileFinder</string>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>destination_path</key>
+               <string>%RECIPE_CACHE_DIR%/downloads/payload</string>
+               <key>pkg_payload_path</key>
+               <string>%found_filename%/Payload</string>
+            </dict>
+            <key>Processor</key>
+            <string>PkgPayloadUnpacker</string>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>input_plist_path</key>
+               <string>%RECIPE_CACHE_DIR%/downloads/payload/Microsoft Edge.app/Contents/Info.plist</string>
+               <key>plist_version_key</key>
+               <string>CFBundleShortVersionString</string>
+            </dict>
+            <key>Processor</key>
+            <string>Versioner</string>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PkgCopier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>source_pkg</key>
+               <string>%pathname%</string>
+               <key>pkg_path</key>
+               <string>%RECIPE_CACHE_DIR%/%VENDOR%_%SOFTWARETITLE%_%version%.pkg</string>
             </dict>
          </dict>
          <dict>
             <key>Processor</key>
-            <string>EndOfCheckPhase</string>
-         </dict>
-         <dict>
-            <key>Processor</key>
-            <string>CodeSignatureVerifier</string>
+            <string>PathDeleter</string>
             <key>Arguments</key>
             <dict>
-               <key>input_path</key>
-               <string>%pathname%</string>
-               <key>expected_authority_names</key>
+               <key>path_list</key>
                <array>
-                  <string>Developer ID Installer: Microsoft Corporation (UBF8T346G9)</string>
-                  <string>Developer ID Certification Authority</string>
-                  <string>Apple Root CA</string>
+                  <string>%RECIPE_CACHE_DIR%/downloads/unpack</string>
+                  <string>%RECIPE_CACHE_DIR%/downloads/payload</string>
                </array>
             </dict>
          </dict>
