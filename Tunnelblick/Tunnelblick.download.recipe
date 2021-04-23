@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest version of Tunnelblick.</string>
 	<key>Identifier</key>
-	<string>com.github.freogelein.download.Tunnelblick</string>
+	<string>com.github.froegelein.download.Tunnelblick</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
