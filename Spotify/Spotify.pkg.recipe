@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads latest Spotify disk image and builds a package.</string>
     <key>Identifier</key>
-    <string>com.github.froegelein.download.spotify</string>
+    <string>com.github.froegelein.pkg.spotify</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
