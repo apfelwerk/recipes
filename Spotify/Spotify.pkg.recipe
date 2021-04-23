@@ -12,7 +12,7 @@
         <string>Spotify</string>
     </dict>
     <key>ParentRecipe</key>
-    <string>ccom.github.froegelein.download.Spotify</string>
+    <string>com.github.froegelein.download.Spotify</string>
     <key>Process</key>
     <array>
         <dict>
