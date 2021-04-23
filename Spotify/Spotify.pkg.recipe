@@ -3,18 +3,16 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads and packages Spotify</string>
+    <string>Spotify</string>
     <key>Identifier</key>
-    <string>com.github.froegelein.pkg.Spotify</string>
+    <string>com.github.froegelein.pkg.spotify</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
         <string>Spotify</string>
     </dict>
-    <key>MinimumVersion</key>
-    <string>2.0</string>
     <key>ParentRecipe</key>
-    <string>com.github.froegelein.download.Spotify</string>
+    <string>com.github.froegelein.download.spotify</string>
     <key>Process</key>
     <array>
         <dict>
