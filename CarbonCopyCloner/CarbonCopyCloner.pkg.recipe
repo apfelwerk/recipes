@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the current release version of Cyberduck and builds a package.</string>
+    <string>Downloads the current release version of CarbonCopyCloner and builds a package.</string>
     <key>Identifier</key>
     <string>com.github.manuelamunoz.pkg.CarbonCopyCloner</string>
     <key>Input</key>
