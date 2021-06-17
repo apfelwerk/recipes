@@ -3,7 +3,7 @@ Autopkg Recipes
 
 Ziel: autopkg mit Version --->NameProgram-VersionNummer.pkg
 
-Überblick Fälle Programmen beim Herunterladen:
+Überblick Fälle Programme beim Herunterladen:
  
 - .dmg ---> .app -----> .pkg mit Version : Google Chrome
 - .dmg ---> .pkg -----> .pkg mit Version : Cisco Webex Meetings
