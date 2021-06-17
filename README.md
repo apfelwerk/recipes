@@ -10,4 +10,4 @@ Ziel: autopkg mit Version --->NameProgram-VersionNummer.pkg
 - .pkg ---------------> .pkg mit Version : Zoom
 - .zip ---> .app -----> .pkg mit Version : Visual Studio Code
 
-je nachdem datei die man herunterlädt, kann man das Script anpassen-
+je nachdem datei die man herunterlädt, kann man das Script anpassen
