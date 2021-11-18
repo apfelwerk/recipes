@@ -16,3 +16,6 @@ Je nachdem welche Datei man herunterlädt, kann man das Script anpassen.
 
 2. PKGs Signieren
 3. JSSImporter 
+4. Rechte des Programm anpassen:
+- in pkg.recipe, user: root und group: admin
+- Die Rechte in recipes mit CFBundleVersion kann man nicht direkt anpassen, es wird automatisch user: root und group: wheel.
